@@ -36,6 +36,31 @@ class ViewController: UIViewController {
             }else{
                 var tempTexto = texto as! String // convierte el NSString en string
                 devuelveLibro.text = tempTexto //evia a uitextview el texto
+                
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
+                    let dico1 = json as! NSDictionary
+                    let dico2 = dico1["\(capturaISBN)"] as! NSDictionary
+                    //let dico3 = dico2["title"] as! NSDictionary
+                    self.devuelveLibro.text = dico2 ["title"] as! NSString as String
+                 /*
+                    let dico4 = dico2["authors"] as! NSDictionary
+                    let dico5 = dico4["name"] as! NSDictionary
+                    
+                    self.devuelveLibro.text = dico5 ["city"] as! NSString as String
+                    
+                    let dico6 = dico4["item"] as! NSDictionary
+                    let dico7 = dico6["condition"] as! NSDictionary
+                    self.devuelveLibro.text = dico7 ["temp"] as! NSString as String
+                 */
+                }
+                catch _  {
+                    
+                }
+
+                
+                
+                
             }
             
             
